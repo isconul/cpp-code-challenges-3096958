@@ -16,30 +16,10 @@
 // Returns: A boolean value. True for palindromes, false otherwise.
 bool is_palindrome(std::string str){
 
-    std::vector <char> cl;
-    
-    for (auto x : str) {
-        if (!iswalnum(x)) {
-            return false;
-        }
-        cl.push_back(tolower(x));
-    }
-
-    std::string org_s;
-    for (auto x: cl) {
-        org_s.push_back(x);
-    }
-
-    std::reverse(cl.begin(),cl.end());
-
-    std::string new_s;
-    for (auto x : cl) {
-        new_s.push_back(x);
-    }
-
-    //std::cout << "Original: " << org_s << std::endl;
-    //std::cout << "New: " << new_s << std::endl;
-    return org_s == new_s;
+    std::transform(str.begin(),str.end(),str.begin(),tolower);
+    std::string rev = str;
+    std::reverse(rev.begin(),rev.end());
+    return rev == str;
 }
 
 // Main function
