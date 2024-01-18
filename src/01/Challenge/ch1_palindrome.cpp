@@ -6,6 +6,8 @@
 
 #include <iostream>
 #include <algorithm>
+#include <cwctype>
+#include <vector>
 
 // is_palindrome()
 // Summary: This function receives a string and returns true if the string is a palindrome, false otherwise.
@@ -14,9 +16,30 @@
 // Returns: A boolean value. True for palindromes, false otherwise.
 bool is_palindrome(std::string str){
 
-    // Write your code here
+    std::vector <char> cl;
+    
+    for (auto x : str) {
+        if (!iswalnum(x)) {
+            return false;
+        }
+        cl.push_back(tolower(x));
+    }
 
-    return false;
+    std::string org_s;
+    for (auto x: cl) {
+        org_s.push_back(x);
+    }
+
+    std::reverse(cl.begin(),cl.end());
+
+    std::string new_s;
+    for (auto x : cl) {
+        new_s.push_back(x);
+    }
+
+    //std::cout << "Original: " << org_s << std::endl;
+    //std::cout << "New: " << new_s << std::endl;
+    return org_s == new_s;
 }
 
 // Main function
